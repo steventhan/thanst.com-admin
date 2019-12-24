@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import com.moowork.gradle.node.yarn.YarnTask
 
 plugins {
     kotlin("jvm") version Versions.kotlin
@@ -62,9 +63,11 @@ tasks {
             jvmTarget = "11"
         }
     }
+    val compileWebpack by registering(YarnTask::class) {
+        args = listOf("run", "build")
+    }
 
-    val compileWebpack by registering() {
-
-
+    processResources {
+        dependsOn(compileWebpack)
     }
 }
