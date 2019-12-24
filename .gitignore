@@ -32,3 +32,16 @@ hs_err_pid*
 
 # Mac OS
 .DS_Store
+
+# Node / JS
+lib-cov
+coverage
+*.lcov
+.nyc_output
+.grunt
+bower_components
+.lock-wscript
+node_modules/
+jspm_packages/
+*.tsbuildinfo
+.npm
