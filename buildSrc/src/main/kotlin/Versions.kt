@@ -6,5 +6,6 @@ object Versions {
     const val gradleNodePlugin = "1.3.1"
     const val node = "12.14.0"
     const val yarn = "1.21.1"
+    const val thymeleaf = "3.0.11.RELEASE"
 }
 
