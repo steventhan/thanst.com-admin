@@ -5,7 +5,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.spring") version Versions.kotlin
     id("org.springframework.boot") version Versions.springBoot
     id("io.spring.dependency-management") version Versions.springDependencyMgmt
-
+    id ("com.moowork.node") version Versions.gradleNodePlugin
 }
 
 group = "com.thanst.admin"
@@ -16,7 +16,12 @@ java {
     targetCompatibility = JavaVersion.VERSION_11
 }
 
-val developmentOnly by configurations.creating
+node {
+    version = Versions.node
+    yarnVersion = Versions.yarn
+}
+
+val developmentOnly: Configuration by configurations.creating
 configurations {
     runtimeClasspath {
         extendsFrom(developmentOnly)
@@ -56,5 +61,10 @@ tasks {
             freeCompilerArgs = listOf("-Xjsr305=strict")
             jvmTarget = "11"
         }
+    }
+
+    val compileWebpack by registering() {
+
+
     }
 }
