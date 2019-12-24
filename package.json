@@ -1,0 +1,9 @@
+{
+  "name": "thanst.com-admin",
+  "version": "1.0.0",
+  "description": "thanst.com admin app",
+  "main": "index.js",
+  "repository": "https://github.com/steventhan/thanst.com-admin",
+  "author": "Steven Than <steven@thanst.com>",
+  "license": "none"
+}
