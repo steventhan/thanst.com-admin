@@ -3,7 +3,7 @@ import com.moowork.gradle.node.yarn.YarnTask
 
 plugins {
     kotlin("jvm") version Versions.kotlin
-    id("org.jetbrains.kotlin.plugin.spring") version Versions.kotlin
+    kotlin("plugin.spring") version Versions.kotlin
     id("org.springframework.boot") version Versions.springBoot
     id("io.spring.dependency-management") version Versions.springDependencyMgmt
     id ("com.moowork.node") version Versions.gradleNodePlugin
@@ -40,6 +40,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+//    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 
     // Development dependencies
     developmentOnly("org.springframework.boot:spring-boot-devtools")
@@ -49,8 +51,6 @@ dependencies {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
     testImplementation("io.projectreactor:reactor-test")
-
-
 }
 
 tasks {
@@ -67,7 +67,8 @@ tasks {
         args = listOf("run", "build")
     }
 
-    processResources {
+    bootJar {
         dependsOn(compileWebpack)
+        classpath(file("$buildDir/resources/"))
     }
 }
