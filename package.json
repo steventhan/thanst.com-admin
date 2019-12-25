@@ -2,25 +2,24 @@
     "name": "thanst.com-admin",
     "version": "1.0.0",
     "description": "thanst.com admin app",
-    "main": "index.js",
     "repository": "https://github.com/steventhan/thanst.com-admin",
     "author": "Steven Than <steven@thanst.com>",
     "license": "MIT",
     "scripts": {
-        "build": "webpack --mode=development"
+        "build:dev": "webpack --config=webpack.dev.js",
+        "build:prod": "webpack --config=webpack.prod.js"
     },
     "devDependencies": {
         "typescript": "^3.7.4",
         "webpack": "^4.41.4",
-        "webpack-cli": "^3.3.10"
-    },
-    "dependencies": {
+        "webpack-cli": "^3.3.10",
         "@types/node": "^13.1.0",
         "@types/react": "^16.9.17",
         "@types/react-dom": "^16.9.4",
         "html-webpack-plugin": "^3.2.0",
         "react": "^16.12.0",
         "react-dom": "^16.12.0",
-        "ts-loader": "^6.2.1"
+        "ts-loader": "^6.2.1",
+        "webpack-merge": "^4.2.2"
     }
 }

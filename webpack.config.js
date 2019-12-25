@@ -2,11 +2,10 @@ const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const REACT_PATH = path.resolve(__dirname, "src/main/react");
-const OUTPUT_PATH = path.resolve(__dirname, "build/resources/static");
+const OUTPUT_PATH = path.resolve(__dirname, "src/main/resources/static");
 
-const config = {
+module.exports = env => ({
     entry: path.join(REACT_PATH, "index.tsx"),
-    devtool: 'inline-source-map',
     module: {
         rules: [
             {
@@ -29,6 +28,5 @@ const config = {
             filename: path.join(OUTPUT_PATH, "index.html")
         })
     ]
-};
+});
 
-module.exports = config;
