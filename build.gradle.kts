@@ -64,11 +64,15 @@ tasks {
         }
     }
     val compileWebpack by registering(YarnTask::class) {
-        args = listOf("run", "build")
+        args = listOf("run", "build:dev")
     }
 
     bootJar {
         dependsOn(compileWebpack)
-        classpath(file("$buildDir/resources/"))
+//        classpath(file("$buildDir/resources/"))
+    }
+
+    clean {
+        delete(file("$projectDir/src/main/resources/static"))
     }
 }
