@@ -45,3 +45,7 @@ node_modules/
 jspm_packages/
 *.tsbuildinfo
 .npm
+
+# Webpack output dir
+src/main/resources/static/
+
