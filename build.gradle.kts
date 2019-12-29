@@ -29,6 +29,14 @@ configurations {
     }
 }
 
+sourceSets {
+    main {
+        resources {
+            srcDirs(file("$buildDir/webpack"))
+        }
+    }
+}
+
 repositories {
     mavenLocal()
     mavenCentral()
@@ -40,8 +48,10 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
-//    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    implementation("org.springframework.security:spring-security-oauth2-client")
+    implementation("org.springframework.security:spring-security-oauth2-jose")
 
     // Development dependencies
     developmentOnly("org.springframework.boot:spring-boot-devtools")
@@ -65,11 +75,6 @@ tasks {
     }
     val compileWebpack by registering(YarnTask::class) {
         args = listOf("run", "build:dev")
-    }
-
-    bootJar {
-        dependsOn(compileWebpack)
-//        classpath(file("$buildDir/resources/"))
     }
 
     clean {
